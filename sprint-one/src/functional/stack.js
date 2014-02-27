@@ -13,7 +13,7 @@ var makeStack = function(){
 
   instance.pop = function(){
     if(size <= 0){
-      return 'Stack is already empty';
+      return console.log('Stack is already empty');
     }
     size--;
     var item = storage[size];

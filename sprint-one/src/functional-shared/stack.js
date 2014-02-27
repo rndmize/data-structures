@@ -7,7 +7,6 @@ var makeStack = function() {
   instance.length = 0; // Hint: set an initial value here
 
   _.extend(instance, stackMethods);
-  console.log(instance);
   // Use an object with numeric keys to store values
   return instance;
 };

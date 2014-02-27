@@ -27,7 +27,7 @@ queueMethods.dequeue = function() {
   if (this.begin === this.end) {
     return console.log('WHAT WERE U THINKIN?!');
   }
-  var item = this.storage[this.start];
+  var item = this.storage[this.begin];
   this.begin++;
   return item;
 };

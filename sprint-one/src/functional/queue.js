@@ -21,7 +21,7 @@ var makeQueue = function(){
       }
       return first;
     } else {
-      return 'Nope';
+      return console.log('Nope');
     }
   };
 
