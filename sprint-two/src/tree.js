@@ -19,19 +19,19 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(target){
+  // check a node
   if (this.value === target) {
     return true;
   }
-  for (var i = 0; i < this.children.length; i++) {
-    if (this.children[i].value === target) {
-      return true;
-    }
-    if (this.children[i].children !== undefined) {
-      console.log(this.children);
-      return this.children[i].contains(target);
-      // return this.contains.call(this.children[i], target);
+  // check for children
+  if (this.children) {
+    for (var i = 0; i < this.children.length; i++) {
+      if (this.children[i].contains(target)) {
+        return true;
+      }
     }
   }
+
   return false;
 };
 
