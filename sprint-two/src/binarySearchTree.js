@@ -1,21 +1,21 @@
 var makeBinarySearchTree = function(value){
   this.value = value;
-  this.leftChild = null;
-  this.rightChild = null;
+  this.left = null;
+  this.right = null;
 };
 
 makeBinarySearchTree.prototype.insert = function(value) {
   var node = {
     value : value,
-    leftChild : null,
-    rightChild : null
+    left : null,
+    right : null
   };
   var parent = this.traverse(value, this);
-  if(parent) {
-    if(parent.rightChild){
-      parent.rightChild = node;
+  if(parent !== false) {
+    if(parent.right === undefined){
+      parent.right = node;
     }else{
-      parent.leftChild = node;
+      parent.left = node;
     }
   }
 };
@@ -25,25 +25,25 @@ makeBinarySearchTree.prototype.traverse = function(target, currentNode) {
   if (target === currentNode.value) {
     return false;
   } else if (target > currentNode.value) {
-    if(currentNode.rightChild === null) {
-      currentNode.rightChild = true;
+    if(currentNode.right === null || currentNode.right === undefined) {
+      currentNode.right = undefined;
       return currentNode;
     }
-    this.traverse(target, currentNode.rightChild);
+    return this.traverse(target, currentNode.right);
   } else if (target < currentNode.value) {
-    if(currentNode.leftChild === null){
-      currentNode.leftChild = true;
+    if(currentNode.left === null || currentNode.left === undefined){
+      currentNode.left = undefined;
       return currentNode;
     }
-    this.traverse(target, currentNode.leftChild);
+    return this.traverse(target, currentNode.left);
   }
 };
 
-makeBinarySearchTree.prototype.contains = function() {
-
+makeBinarySearchTree.prototype.contains = function(target) {
+  return !this.traverse(target, this); // probably no side effects now
 };
 
-makeBinarySearchTree.prototype.depthFirstLog = function() {
+makeBinarySearchTree.prototype.depthFirstLog = function(callback) {
 
 };
 
